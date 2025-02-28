@@ -27,10 +27,10 @@ print(find_packages(where='src'))
 
 setup(
     name='pywui',
-    description='Use Ultralytics YOLO V8 to take the control of scene objects in unity.',
+    description='Use Ultralytics YOLO V11    to take the control of scene objects in unity.',
     version='0.1',
     packages=find_packages(where='src'),
-    url='https://github.com/mathis-lambert/Python-Yolo-Wrapper-for-Unity-interactions',
+    url='https://github.com/unitedgamesbr/Python-Yolo-Wrapper-for-Unity-interactions/',
     install_requires=parse_requirements(
         Path(__file__).parent / 'requirements.txt'),
     entry_points={
