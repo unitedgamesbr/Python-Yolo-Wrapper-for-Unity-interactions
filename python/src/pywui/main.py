@@ -21,8 +21,8 @@ parser.add_argument(
 parser.add_argument(
     "--model",
     type=str,
-    default="./models/yolov8n-pose.pt",
-    help="model path, default is yolov8n-pose.pt",
+    default="./models/yolo11n-pose.pt",
+    help="model path, default is yolo11n-pose.pt",
 )
 parser.add_argument(
     "--detect-method",
@@ -30,6 +30,13 @@ parser.add_argument(
     default="predict",
     choices=["predict", "track"],
     help="detection method, predict or track",
+)
+parser.add_argument(
+    "--backend",
+    type=str,
+    default="dshow",
+    choices=["dshow", "msmf","vfw"],
+    help="camera backend: Direct Show, MSMF or VFW",
 )
 parser.add_argument(
     "--tracker",
@@ -94,8 +101,12 @@ class main:
             pass
         # Détecte le système d'exploitation
         if platform.system() == 'Windows':
-            # Sur Windows, utilise le backend MSMF
-            self.cap = cv2.VideoCapture(args.source, cv2.CAP_MSMF)
+            if(args.backend == "dshow"):
+                self.cap = cv2.VideoCapture(args.source, cv2.CAP_DSHOW)
+            elif(args.backend == "msmf"):
+                self.cap = cv2.VideoCapture(args.source, cv2.CAP_MSMF)
+            elif(args.backend == "vfw"):
+                self.cap = cv2.VideoCapture(args.source, cv2.CAP_VFW)
         else:
             # Sur les autres systèmes d'exploitation, utilise le backend par défaut
             self.cap = cv2.VideoCapture(args.source)
@@ -113,12 +124,12 @@ class main:
             filter=args.filter,
             filter_order=args.filter_order,
         )
-
+    
     def start(self):
         """
         Start sending and receiving data with yolo detections and poses
         """
-        print("pywui is running ;) - Mathis LAMBERT 2024")
+        print("pywui is running ;)")
         print("Press ctrl+c to stop the program")
 
         while True:
@@ -127,8 +138,10 @@ class main:
             if not ret:
                 break
 
-            frame = cv2.resize(frame, (0, 0), fx=0.5, fy=0.5)
-
+            #frame = cv2.resize(frame, (0, 0), fx=0.5, fy=0.5)
+            frame = cv2.resize(frame, (540, 960), fx=0.5, fy=0.5)
+            
+            # Run detection and parse results
             # Run detection and parse results
             r, f = self.yolo.run_detection(
                 frame, mode=args.detect_method, tracker=args.tracker
