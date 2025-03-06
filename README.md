@@ -25,13 +25,13 @@ Acesse a página de lançamentos do nosso repositório e baixe o instalador:
 1. Execute o arquivo `run.bat`.  
 2. Selecione a câmera que deseja usar.  
 3. Aguarde o script iniciar o Yolo.  
-
-> O `run.bat` está configurado para usar o modelo `yolo11n-pose.pt` rodando na GPU, com confiança de 0.8, backend `dshow` e método de detecção `predict`.
+>[!NOTE]
+>O `run.bat` está configurado para usar o modelo `yolo11n-pose.pt` rodando na GPU, com confiança de 0.8, backend `dshow` e método de detecção `predict`.
 
 ---
 
 ## Método Manual  
-
+>[!TIP]
 > Caso prefira realizar a instalação manualmente, siga este guia.  
 > Além disso, você pode utilizá-lo para compreender e modificar os arquivos `.bat` originais.
 
