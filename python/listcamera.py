@@ -13,7 +13,7 @@ def list_cameras():
             for index, name in enumerate(devices):
                 cameras.append((index, name))
         except ImportError:
-            print("Instale 'pygrabber' para obter os nomes reais das câmeras no Windows: pip install pygrabber")
+            print("Instale 'pygrabber' para obter os nomes reais das cameras no Windows: pip install pygrabber")
     elif system == "Linux":
         import subprocess
         try:
@@ -27,9 +27,9 @@ def list_cameras():
                         cameras.append((index, camera_name))
                         index += 1
         except FileNotFoundError:
-            print("Instale 'v4l2-utils' para listar câmeras no Linux: sudo apt install v4l2-utils")
+            print("Instale 'v4l2-utils' para listar cameras no Linux: sudo apt install v4l2-utils")
     elif system == "Darwin":
-        print("No macOS, obter nomes de câmeras requer métodos diferentes (AVFoundation).")
+        print("No macOS, obter nomes de cameras requer métodos diferentes (AVFoundation).")
 
     return cameras
 
@@ -40,4 +40,4 @@ if __name__ == "__main__":
         for cam_id, cam_name in cameras:
             print(f"ID: {cam_id} - Name: {cam_name}")
     else:
-        print("Nenhuma câmera encontrada.")
+        print("Nenhuma camera encontrada.")
