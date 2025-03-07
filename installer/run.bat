@@ -1,1 +1,0 @@
-start powershell -Command "cd .\pywui\python; python -m venv venv;  .\venv\Scripts\Activate; python listcamera.py; $cameraID = Read-Host 'Digite o ID da camera'; pywui --model ./models/yolo11n-pose.pt --detect-method predict --source $cameraID --confidence 0.8 --gpu --show;pause;"

@@ -1,1 +1,0 @@
-start powershell -Command "git clone https://github.com/unitedgamesbr/Python-Yolo-Wrapper-for-Unity-interactions.git pywui;cd .\pywui\python;python -m venv venv;.\venv\Scripts\Activate;echo modifique o pip install --upgrade --force-reinstall  torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu118;pause;.\install.bat;"
